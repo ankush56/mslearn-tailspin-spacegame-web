@@ -50,7 +50,7 @@ steps:
   displayName: 'Display plus output variable & store in file'
   workingDirectory: '$(currWorkingDir)/super'
 
-- bash: 'test.sh' # script path or inline
+- bash: '$(workingDirectory)/test.sh' # script path or inline
   workingDirectory: Tailspin.SpaceGame.Web
   displayName: 'Run Script from code'
   #Map secret enc variables etc
