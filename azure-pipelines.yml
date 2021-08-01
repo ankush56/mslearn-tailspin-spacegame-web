@@ -48,7 +48,7 @@ steps:
 
 - script: 'echo "current env is $(env1)" && echo "current env is $(env1)" > currentenv.txt'
   displayName: 'Display plus output variable & store in file'
-  workingDirectory: Tailspin.SpaceGame.Web/super
+  workingDirectory: '$(currWorkingDir)/super'
 
 - bash: 'test.sh' # script path or inline
   workingDirectory: Tailspin.SpaceGame.Web
