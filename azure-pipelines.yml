@@ -9,6 +9,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   env1: 'sit'
+  sec: 'fly'
 
 steps:
 - task: UseDotNet@2
@@ -47,6 +48,13 @@ steps:
 - script: 'echo "current env is $(env1)" && echo "current env is $(env1)" > currentenv.txt'
   displayName: 'Display plus output variable & store in file'
   workingDirectory: Tailspin.SpaceGame.Web/super
+
+- bash: # script path or inline
+  workingDirectory: Tailspin.SpaceGame.Web
+  displayName: 'Run Script from code'
+  #Map secret enc variables etc
+  env:
+    sec: $(sec)
   
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
