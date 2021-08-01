@@ -8,6 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  env1: 'dev'
 
 steps:
 - task: UseDotNet@2
@@ -31,6 +32,18 @@ steps:
   displayName: 'Write build info'
   workingDirectory: Tailspin.SpaceGame.Web/wwwroot
 
+- script: 'echo "Superman can fly $(Build.BuildNumber)" > superman.txt'
+  displayName: 'Superman script'
+  workingDirectory: Tailspin.SpaceGame.Web/super
+
+- script: 'echo "Current build number is $(Build.BuildNumber)" > currentBuild.txt'
+  displayName: 'Superman script'
+  workingDirectory: Tailspin.SpaceGame.Web/super
+
+- script: 'echo "current env is $(env1)" > currentenv.txt && echo "current env is $(env1)"'
+  displayName: 'Superman script'
+  workingDirectory: Tailspin.SpaceGame.Web/super
+  
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
