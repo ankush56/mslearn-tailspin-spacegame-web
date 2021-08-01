@@ -60,13 +60,13 @@ steps:
 # Run a Python file or inline script
 - task: PythonScript@0
   inputs:
-    #scriptSource: 'filePath' # Options: filePath, inline
-    #scriptPath: # Required when scriptSource == filePath
+    scriptSource: 'filePath' # Options: filePath, inline
+    scriptPath: 'Tailspin.SpaceGame.Web/hello.py'
     #script: # Required when scriptSource == inline
     #arguments: # Optional
     #pythonInterpreter: # Optional
-    #workingDirectory: # Optional
-    #failOnStderr: false # Optional
+    workingDirectory: Tailspin.SpaceGame.Web
+    displayName: 'Run Python script'
   
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
