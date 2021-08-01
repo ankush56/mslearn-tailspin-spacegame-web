@@ -10,6 +10,7 @@ variables:
   buildConfiguration: 'Release'
   env1: 'sit'
   sec: 'fly'
+  currWorkingDir: 'Tailspin.SpaceGame.Web/wwwroot'
 
 steps:
 - task: UseDotNet@2
@@ -31,25 +32,25 @@ steps:
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
-  workingDirectory: Tailspin.SpaceGame.Web/wwwroot
+  workingDirectory: $(currWorkingDir)
 
 - script: 'mkdir super'
   displayName: 'Create Superman Folder'
-  workingDirectory: Tailspin.SpaceGame.Web
+  workingDirectory: $(currWorkingDir)
 
 - script: 'echo "Superman can fly $(Build.BuildNumber)" > superman.txt'
   displayName: 'Superman script'
-  workingDirectory: Tailspin.SpaceGame.Web/super
+  workingDirectory: '$(currWorkingDir)/super'
 
 - script: 'echo "Current build number is $(Build.BuildNumber)" > currentBuild.txt'
   displayName: 'Store build info to script'
-  workingDirectory: Tailspin.SpaceGame.Web/super
+  workingDirectory: '$(currWorkingDir)/super'
 
 - script: 'echo "current env is $(env1)" && echo "current env is $(env1)" > currentenv.txt'
   displayName: 'Display plus output variable & store in file'
   workingDirectory: Tailspin.SpaceGame.Web/super
 
-- bash: # script path or inline
+- bash: 'test.sh' # script path or inline
   workingDirectory: Tailspin.SpaceGame.Web
   displayName: 'Run Script from code'
   #Map secret enc variables etc
