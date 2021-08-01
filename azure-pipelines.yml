@@ -8,7 +8,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  env1: 'dev'
+  env1: 'sit'
 
 steps:
 - task: UseDotNet@2
@@ -33,7 +33,7 @@ steps:
   workingDirectory: Tailspin.SpaceGame.Web/wwwroot
 
 - script: 'mkdir super'
-  displayName: 'Create Superman script'
+  displayName: 'Create Superman Folder'
   workingDirectory: Tailspin.SpaceGame.Web
 
 - script: 'echo "Superman can fly $(Build.BuildNumber)" > superman.txt'
@@ -41,11 +41,11 @@ steps:
   workingDirectory: Tailspin.SpaceGame.Web/super
 
 - script: 'echo "Current build number is $(Build.BuildNumber)" > currentBuild.txt'
-  displayName: 'Superman script'
+  displayName: 'Store build info to script'
   workingDirectory: Tailspin.SpaceGame.Web/super
 
-- script: 'echo "current env is $(env1)" > currentenv.txt && echo "current env is $(env1)"'
-  displayName: 'Superman script'
+- script: 'echo "current env is $(env1)" && echo "current env is $(env1)" > currentenv.txt'
+  displayName: 'Display plus output variable & store in file'
   workingDirectory: Tailspin.SpaceGame.Web/super
   
 - task: DotNetCoreCLI@2
