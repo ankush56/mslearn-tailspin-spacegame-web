@@ -50,12 +50,15 @@ steps:
   displayName: 'Display plus output variable & store in file'
   workingDirectory: '$(currWorkingDir)/super'
 
-- bash: 'test.sh' # script path or inline
-  workingDirectory: Tailspin.SpaceGame.Web
-  displayName: 'Run Script from code'
-  #Map secret enc variables etc
-  env:
-    sec: $(sec)
+# Bash
+- task: Bash@3
+  inputs:
+    targetType: 'filePath' # Optional. Options: filePath, inline
+    filePath: 'Tailspin.SpaceGame.Web/test.sh'
+    #arguments: # Optional
+    #script: '# echo Hello world' # Required when targetType == inline
+    #workingDirectory: # Optional
+
 
 # Python script
 # Run a Python file or inline script
