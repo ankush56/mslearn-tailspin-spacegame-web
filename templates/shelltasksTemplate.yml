@@ -1,0 +1,29 @@
+parameters:
+  currWorkingDir : 'Tailspin.SpaceGame.Web/wwwroot'
+  #Default dev in template
+  #On Azure pipeline side pass in param maps
+  env: 'dev'
+
+steps:
+- script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfoTemplate.txt'
+  displayName: 'Running Via template- Build info'
+  workingDirectory: ${{parameters.currWorkingDir}}
+
+
+- script: 'echo "Superman can fly $(Build.BuildNumber)" > supermanviaTemplate.txt'
+  displayName: 'Running Via Template Superman script'
+  workingDirectory: '${{parameters.currWorkingDir}}/super'
+
+- script: 'echo "Running curl command to download ${{parameters.env}} config"'
+  displayName: 'Template- Downloading ${{parameters.env}} config'
+  workingDirectory: '${{parameters.currWorkingDir}}/super'
+
+- script: 'mkdir ${{parameters.env}}'
+  displayName: 'Template- Create ${{parameters.env}} config folder'
+  workingDirectory: '${{parameters.currWorkingDir}}/super' 
+
+- script: 'echo "New config for ${{parameters.env}}" > config.txt'
+  displayName: 'Template- filecreate ${{parameters.env}} config folder'
+  workingDirectory: '${{parameters.currWorkingDir}}/super' 
+
+
