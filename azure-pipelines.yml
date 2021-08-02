@@ -71,7 +71,12 @@ steps:
     #pythonInterpreter: # Optional
     workingDirectory: Tailspin.SpaceGame.Web
     displayName: 'Run Python script'
-  
+
+- template: templates/shelltasksTemplate.yml
+  parameters:
+    currWorkingDir : 'Tailspin.SpaceGame.Web/wwwroot'
+    env: 'pat'
+
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
@@ -89,8 +94,3 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()    
-
-- template: templates/shelltasksTemplate.yml
-  parameters:
-    currWorkingDir : 'Tailspin.SpaceGame.Web/wwwroot'
-    env: 'pat'
