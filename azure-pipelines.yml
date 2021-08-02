@@ -89,3 +89,8 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()    
+
+- template: templates/shelltasksTemplate.yml
+  parameters:
+    currWorkingDir : 'Tailspin.SpaceGame.Web/wwwroot'
+    env: 'pat'
