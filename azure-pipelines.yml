@@ -55,9 +55,6 @@ steps:
   inputs:
     targetType: 'filePath' # Optional. Options: filePath, inline
     filePath: 'Tailspin.SpaceGame.Web/test.sh'
-    env:
-      sec: $(sec)
-
     #arguments: # Optional
     #script: '# echo Hello world' # Required when targetType == inline
     #workingDirectory: # Optional
