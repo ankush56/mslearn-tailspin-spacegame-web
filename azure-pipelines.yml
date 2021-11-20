@@ -45,3 +45,11 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact zip: To pipeline'
   condition: succeeded()
+
+- task: NuGetCommand@2
+  displayName: 'Publish NuGet package'
+  inputs:
+    command: push
+    feedPublish: '$(System.TeamProject)/tailspinFeed'
+    allowPackageConflicts: true
+  condition: succeeded()
