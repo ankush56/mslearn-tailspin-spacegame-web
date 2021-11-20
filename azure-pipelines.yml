@@ -68,6 +68,6 @@ steps:
   displayName: 'Publish NuGet package'
   inputs:
     command: push
-    feedPublish: '$(System.TeamProject)/tailspinFeed'
+    feedPublish: 'SpaceGame/tailspinFeed'
     allowPackageConflicts: true
   condition: succeeded()
